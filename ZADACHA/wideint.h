@@ -44,6 +44,7 @@ public:
 	wint operator++(int);
 	wint operator--(int);
 	static wint abs(wint);
+	static wint isqrt(wint);
 	bool operator!();
 	bool operator||(wint);
 	bool operator&&(wint);

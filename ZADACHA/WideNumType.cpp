@@ -48,7 +48,7 @@ wint::wint(int64_t num)
 		vector<bool> tmp(sz);
 		NoD = sz;
 		ZF = 0;
-		SF = 0;
+		//SF = 0;
 
 		int j = sz - 1;
 		for (int i = 0; i < j - 1; i++) tmp[i] = (bool)((num >> i) & 1);
@@ -517,6 +517,18 @@ wint wint::abs(wint wn)
 		return -wn;
 	else
 		return wn;
+}
+
+wint wint::isqrt(wint wn)
+{
+	//bool a1, a2, a3;
+	wint S = wn, a = 1, b = wn;
+	while (a != b && wint::abs(a-b) > 1)
+	{
+		a = (a + b).Rsh(1);
+		b = S / a;
+	}
+	return (a + b).Rsh(1);
 }
 
 bool wint::operator!()

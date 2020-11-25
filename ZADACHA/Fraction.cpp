@@ -88,13 +88,26 @@ void Fraction::CD(wint & na, wint & da, wint & nb, wint & db)
 
 void Fraction::decimal_to_simple(double frac, wint &n, wint& d)
 {
-	int i = 1;
-	d = wint(i);
+	//int i = 1;
+	d = wint(1);
 
-	k = 9;
-	uint64_t temp = (uint64_t)floor(frac * pow(10LL, k));
-	n = wint(/*floor(frac * pow(10LL, k))*/temp);
-	d = wint((int)pow(10LL, k));
+	k = 15;
+
+	double ipart = floor(frac);
+	double fpart = frac - ipart;
+
+	for (int i = 0; i < k; i++)
+	{
+		fpart *= 10;
+		n = n*10 + (uint64_t)fpart;
+		fpart -= floor(fpart);
+		d *= 10;
+	}
+	n += (wint)(ipart*pow(10, k));
+
+	//uint64_t temp = (uint64_t)floor(frac * pow(10LL, k));
+	//n = wint(/*floor(frac * pow(10LL, k))*/temp);
+	//d = wint((int)pow(10LL, k));
 
 	while (!(n % 2) && !(n % 5))
 	{
@@ -269,10 +282,17 @@ wint Fraction::wpow(wint wn, int p)
 bool Fraction::isPrime(wint a)
 {
 	int i = 2;
-	//int ndivs = int(ceil(sqrt(double(a))));
+	wint ndivs = wint::isqrt(a);
 
-	while (!!(a % i)) { if (wint(++i) > a/*ndivs*/) break; }
-	if (wint(i)> a/*ndivs*/)
+	while (!!(a % i))
+	{
+		if (i % 2)
+		{
+			++i;
+		}
+		else if (wint(++i) > ndivs) break;
+	}
+	if (wint(i)> ndivs)
 	{
 		return true;
 	}
