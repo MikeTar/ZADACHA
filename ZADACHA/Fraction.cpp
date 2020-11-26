@@ -15,6 +15,7 @@ Fraction::Fraction(double frac)
 	set_frac(frac);
 }
 
+/* Перевод дроби из десятичной в простую дробь*/
 void Fraction::FracConverter(double frac)
 {
 	bool inv = false;
@@ -62,7 +63,7 @@ void Fraction::FracConverter(double frac)
 	}
 }
 
-// Поиск наибольшего общего делителя (НОД)
+/* Поиск наибольшего общего делителя (НОД) */
 wint Fraction::GCD(wint a, wint b)
 {
 	a = wint::abs(a);
@@ -78,7 +79,7 @@ wint Fraction::GCD(wint a, wint b)
 	return (a + b);
 }
 
-// Приведение к общему знаменателю
+/* Приведение к общему знаменателю */
 void Fraction::CD(wint & na, wint & da, wint & nb, wint & db)
 {
 	na = na * db;
@@ -86,6 +87,8 @@ void Fraction::CD(wint & na, wint & da, wint & nb, wint & db)
 	da = db = da * db;
 }
 
+/* Переиод десятичной дроби в обыкновенную дробь 
+(не обязательно в простую)*/
 void Fraction::decimal_to_simple(double frac, wint &n, wint& d)
 {
 	//int i = 1;
@@ -105,10 +108,6 @@ void Fraction::decimal_to_simple(double frac, wint &n, wint& d)
 	}
 	n += (wint)(ipart*pow(10, k));
 
-	//uint64_t temp = (uint64_t)floor(frac * pow(10LL, k));
-	//n = wint(/*floor(frac * pow(10LL, k))*/temp);
-	//d = wint((int)pow(10LL, k));
-
 	while (!(n % 2) && !(n % 5))
 	{
 		n /= 10;
@@ -116,12 +115,6 @@ void Fraction::decimal_to_simple(double frac, wint &n, wint& d)
 		k--;
 	}
 }
-
-//void Fraction::operator=(Fraction& a)
-//{
-//	num = a.num;
-//	denom = a.denom;
-//}
 
 Fraction Fraction::operator+(Fraction& a)
 {
@@ -223,6 +216,7 @@ bool Fraction::operator!=(Fraction & a)
 	return na != nb;
 }
 
+/* Сокращение дроби */
 void Fraction::Reduction()
 {
 	Reduction(num, denom);
@@ -252,15 +246,19 @@ void Fraction::set_frac(wint num, wint denom)
 	this->denom = denom;
 }
 
+/* Получение числителя*/
 wint Fraction::get_num()
 {
 	return num;
 }
 
+/* Получение знаменателя*/
 wint Fraction::get_denom()
 {
 	return denom;
 }
+
+/* Возведение дроби в целую степень*/
 // p - целочисленное значение степени
 wint Fraction::wpow(wint wn, int p)
 {
@@ -279,6 +277,7 @@ wint Fraction::wpow(wint wn, int p)
 	}
 }
 
+/* Определение является ли число простым */
 bool Fraction::isPrime(wint a)
 {
 	int i = 2;
@@ -303,6 +302,7 @@ bool Fraction::isPrime(wint a)
 	else return true;
 }
 
+/* Определение наличия НОД != 1 двух чисел*/
 bool Fraction::hasDivs(wint num, wint denom)
 {
 	return (GCD(num, denom) == 1) ? false : true;

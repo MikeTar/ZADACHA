@@ -3,6 +3,7 @@
 #include <stdarg.h>
 #include <vector>
 #include"Fraction.h"
+#include"Timer.h"
 
 int os_flags;
 #define store_flags os_flags=cout.flags();
@@ -72,7 +73,9 @@ void main()
 
 	double x, pi = 3.1415926535897932;
 
+	Timer mt;
 	x = Sin(pi / 4);
+	cout << "Time of execute sin( pi/4 ): " << mt.elapsed() << " s" << endl;
 	store_flags
 	cout << setw(16) << setprecision(15);
 	cout << "sin( pi/4 ) is " << x << endl;

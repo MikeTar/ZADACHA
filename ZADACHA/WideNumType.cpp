@@ -132,12 +132,14 @@ void wint::set_num(int64_t num)
 
 }
 
+/* Перевод числа в доп код*/
 void wint::altcode()
 {
 	bwint.flip();
 	inc();
 }
 
+/* Низкоуровневый инкремент*/
 void wint::inc()
 {
 	int sz = (int)bwint.size();
@@ -155,6 +157,7 @@ void wint::inc()
 	bwint = res;
 }
 
+/* Метод возвращяющий число в виде строки*/
 string wint::to_str(num_sys divr)
 {
 	char ch;
@@ -423,7 +426,6 @@ wint wint::operator/(wint divisor)
 	if (!quotient.isNAN() && quotient.NoD < 0)
 		quotient.NoD = (int)quotient.bwint.size();
 	quotient.resize();
-
 	quotient.SF = SF;
 	return quotient;
 }
@@ -519,6 +521,7 @@ wint wint::abs(wint wn)
 		return wn;
 }
 
+/* Целочисленный квадратный корень */
 wint wint::isqrt(wint wn)
 {
 	//bool a1, a2, a3;
@@ -579,6 +582,7 @@ bool wint::operator!=(wint wn)
 	return !(*this == wn);
 }
 
+/* Метод предоставляющий остаток от деления */
 wint wint::rem()
 {
 	wint res;
@@ -590,12 +594,15 @@ wint wint::rem()
 	return res;
 }
 
+/* Метод предоставляющий длинну числа в битах */
 int wint::size()
 {
 	return NoD;
 }
 
 
+/* Метод уменьщающий длинну числа
+отсечением нулевых битов слева */
 inline void wint::resize()
 {
 	NoD = (int)bwint.size();
@@ -605,6 +612,7 @@ inline void wint::resize()
 	bwint.resize(NoD);
 }
 
+/* Метод сдвигающий число на n разрядов влево */
 inline wint& wint::Lsh(uint32_t n)
 {
 	wint tmp;
@@ -618,6 +626,7 @@ inline wint& wint::Lsh(uint32_t n)
 	return *this;
 }
 
+/* Метод сдвигающий число на n разрядов вправо */
 inline wint& wint::Rsh(uint32_t n)
 {
 	wint tmp;
@@ -631,11 +640,13 @@ inline wint& wint::Rsh(uint32_t n)
 	return *this;
 }
 
+// Метод указывающий на пустое число
 bool wint::isNAN()
 {
 	return bwint.empty();
 }
 
+/* Метод возвращающий дробную часть от деления двух чисел */
 /*
 Result of division two wide integer numbers will be correct if first number is lower then second number.
 Otherwise result of division will contain only fractional part of result number.

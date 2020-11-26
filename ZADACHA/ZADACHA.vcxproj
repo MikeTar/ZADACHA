@@ -143,10 +143,12 @@
     <ClCompile Include="Polynom.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Sin.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="WideNumType.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fraction.h" />
+    <ClInclude Include="Timer.h" />
     <ClInclude Include="wideint.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
