@@ -1,4 +1,7 @@
-﻿#include"wideint.h"
+﻿/* Тип широких чисел для работы с числами
+превышающими разрядную сетку стандартных типов,
+то есть свыше 64 бит */
+#include"wideint.h"
 
 std::ostream& operator<<(std::ostream& out, wint &wn)
 {
