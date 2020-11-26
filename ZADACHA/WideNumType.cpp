@@ -3,7 +3,6 @@
 std::ostream& operator<<(std::ostream& out, wint &wn)
 {
 	auto flags = cout.flags();
-	//if(ios::binary) out << wn.to_str(num_sys::bin);
 	if (flags & std::ios::oct)
 		out << wn.to_str(num_sys::_oct);
 	else if (flags & std::ios::dec)
@@ -28,7 +27,6 @@ wint div(wint, wint);
 
 wint::wint()
 {
-	//rem = (reminder*)malloc(sizeof(reminder));
 	bwint.push_back(0);
 	NoD = ZF = 1;
 	SF = 0;
