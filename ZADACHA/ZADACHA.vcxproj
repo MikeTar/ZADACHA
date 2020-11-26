@@ -151,6 +151,9 @@
     <ClInclude Include="Timer.h" />
     <ClInclude Include="wideint.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Задачки.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

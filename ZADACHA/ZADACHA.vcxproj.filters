@@ -45,4 +45,7 @@
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Задачки.txt" />
+  </ItemGroup>
 </Project>
