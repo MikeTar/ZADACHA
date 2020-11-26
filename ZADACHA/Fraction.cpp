@@ -87,7 +87,7 @@ void Fraction::CD(wint & na, wint & da, wint & nb, wint & db)
 	da = db = da * db;
 }
 
-/* Переиод десятичной дроби в обыкновенную дробь 
+/* Перевод десятичной дроби в обыкновенную дробь 
 (не обязательно в простую)*/
 void Fraction::decimal_to_simple(double frac, wint &n, wint& d)
 {
