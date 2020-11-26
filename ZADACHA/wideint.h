@@ -1,4 +1,4 @@
-#ifndef WIDEINTTYPE
+﻿#ifndef WIDEINTTYPE
 #define WIDEINTTYPE
 
 #include <iostream>
