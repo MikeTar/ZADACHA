@@ -30,7 +30,6 @@ public:
 	wint wpow(wint, int);
 private:
 	uint64_t k;
-	double frac;
 	wint num = 0;
 	wint denom = 1;
 	void FracConverter(double frac);
