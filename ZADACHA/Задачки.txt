@@ -33,14 +33,18 @@ class some_class
 
 class some_class1
 {
-	static int count = 0;
+	static int count = 1;
 public:
 	some_class1()
 	{
-		if(count>1) throw "Can not make more than one object"
-// брасаем исключение при попытке создать более одного объекта класса
-		++count;
+		if(count!=0)
+		{
+			--count;
+		}
+		else throw "Can not make more than one object" // брасаем исключение при попытке создать более одного объекта класса
 	};
+}
+Можно расширить до N объектов.
 
 }// По умолчанию все члены класс являются private следовательно конструктор класса не доступен и невозможно создать объекта класса.
 
